@@ -19,9 +19,6 @@ jobs:
       with:
         description: |
           ### TIL Repo
-
           ---
-
         footer: |
-
         list_most_recent: 3
