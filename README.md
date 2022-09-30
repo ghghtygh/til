@@ -1,8 +1,8 @@
 # TIL
 > Today I Learned
 
-### TIL Repo
----
+
+A collection of concrete writeups of small things I learn daily.
 
 
 _1 TILs and counting..._
