@@ -18,7 +18,5 @@ jobs:
       uses: cflynn07/github-action-til-autoformat-readme@1.1.0
       with:
         description: |
-          ### TIL Repo
-          ---
         footer: |
         list_most_recent: 3
