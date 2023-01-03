@@ -589,12 +589,38 @@ EntityManager에서 하이버네이트 Session을 구한 뒤, doWork() 메서드
 
 영속성 컨텍스트와 데이터베이스가 불일치 상태가 될 수 있으므로 적절한 시점에 강제로 플러시해야함
 
+### 벌크 연산
+여러 건을 한 번에 수정하거나 삭제할 때 사용
+executeUpdate() 메서드
+영속성 컨텍스트를 무시하고 데이터베이스에 직접 쿼리
+-> 같은 영속성 컨텍스트에서 관리되고 있는 엔티티가 변해도 변경감지가 수행되지 않을 수 있어 정합성에 문제가 생길 수 있음
+1. em.refresh() 사용 -> 데이터베이스에서 해당 엔티티 다시 조회
+2. 벌크 연산 먼저 실행
+3. 벌크 연산 수행 후 영속성 컨텍스트 초기화
 
+## 스프링 데이터 JPA
+스프링 프레임워크에서 JPA를 편리하게 사용할 수 있도록 지원하는 프로젝트
+CRUD 처리를 위한 공통 인터페이스 제공(런타임시 구현객체 동적생성 후 주입)
 
+### 쿼리 메서드 기능
+메서드명으로 쿼리를 생성하는 기능
 
+### JPA NamedQuery
+쿼리에 이름을 부여해서 사용하는 방법(XML, @Query에 정의)
 
+### 명세(Specification)
+스프링 데이터 JPA에서는 JPA Criteria로 Specification을 사용하도록 지원
+컴포지트 패턴으로 구성되어 여러 Specification을 조합 (다양한 검색조건 조립)
+파라미터로 주어진 JPA Criteria의 Root, CriteriaQuery, CriteiaBuilder 클래스를 활용해서 적절한 검색 조건을 반환
 
+#### 스프링 데이터 JPA와 QueryDSL 통합
+1. QueryDslPredicateExecutor 사용
+레포지터리에서 QueryDslPredicateExecutor를 상속
+편하지만 페치조인을 사용 불가 등 기능의 한계가 존재
 
+2. QueryDslRepositorySupport 사용
+JPAQuery 객체를 직접 생성해서 사용
+QueryDslRepositorySupport를 상속 받아 쉽게 구현 가능
 
 ## 트랜잭션 범위의 영속성 컨텍스트
 ### 스프링 컨테이너 기본 전략
