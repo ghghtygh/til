@@ -68,5 +68,15 @@ RabbitMQ, Redis Queue
 서비스에서 나온 이벤트를 큐에 저장
 Kafka, AWS Kinesis
 
+주키퍼 : 카프카 관련 정보를 저장
+
+## 카프카 프로듀서 애플리케이션
+kafka-clients와 Kafka broker 버전에 유의
+bootstrap.servers -> 브로커 설정은 두개 이상을 권장 (한 서버 장애발생시 다른 서버에 연결)
+key.serializer -> 키를 직렬화
+value.serializer -> 값을 직렬화
+byte array, string, integer 등 사용
+
+키를 포함하여 보내면 해시되어 특정 파티션에 저장되지만, 추후 파티션이 늘어났을 때 매칭이 불가해짐 (파티션 추가 X 권장)
 
 
