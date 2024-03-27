@@ -10,3 +10,4 @@
 - [JPA](jpa/README.md)
 - [Kafka](kafka/README.md)
 - [Book](book/README.md)
+- [강의](lecture/README.md)
